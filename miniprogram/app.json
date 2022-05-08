@@ -1,0 +1,14 @@
+{
+	"pages": [
+		"pages/index/index",
+		"pages/admin/admin"
+	],
+	"window": {
+		"backgroundTextStyle": "light",
+		"navigationStyle": "custom",
+		"navigationBarTitleText": "上请帖",
+		"navigationBarTextStyle": "white"
+	},
+	"sitemapLocation": "sitemap.json",
+	"style": "v2"
+}

@@ -1,0 +1,63 @@
+/* 引人样式 style/main.css */
+@import 'style/main.wxss';
+
+.show {
+    animation: setOpacity 2s 1;
+}
+
+@keyframes setOpacity {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* ⼼跳动画 */
+.heartbeat {
+    animation: heartbeat 2s linear 3s infinite;
+}
+
+@keyframes heartbeat {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+
+    14% {
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2)
+    }
+
+    28% {
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+
+    42% {
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2)
+    }
+
+    70% {
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+}
+
+.snow {
+  width: fit-content;
+  position: absolute;
+  top: -100rpx;
+  width: 30rpx;
+  height: 27rpx;
+  z-index: 11;
+  color: #bf2d37;
+  /* animation: roundRule 2.5s ease-in-out infinite; */
+}
+
+.snow:nth-child(2n+2) {
+  font-size: 46rpx;
+}

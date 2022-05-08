@@ -1,0 +1,33 @@
+<swiper style="height: 100vh; width: 100vw;" vertical current="{{swiperIndex}}" duration="{{888}}" bindchange="pageChange">
+    <!-- 主页 -->
+    <swiper-item class="home" current="{{swiperIndex}}">
+        <view class="card cover show">
+            <view>
+                <text wx:for="{{snows}}" wx:key="index" style="left:{{snows[index]}}rpx" animation="{{animation[index]}}" class='snow iconfont icon-aixin_shixin' data-index='{{index}}'></text>
+            </view>
+            <text class="title">
+                喜帖
+            </text>
+            <view class="content">
+                <text class="tips1"> 永结同心 </text>
+                <text class="xi iconfont icon-aixin_shixin"></text>
+                <text class="tips2"> 百年好合 </text>
+            </view>
+            <view class="bottom">
+                <button class="leeBtn heartbeat" bindtap="nextPage">小生亲启</button>
+            </view>
+        </view>
+    </swiper-item>
+    <!-- 请帖内容 -->
+    <swiper-item>
+        <view class="card morePage show" style="position: relative;">
+            <view class="poet popupPage">
+                <view wx:for="{{textList}}" wx:key="index" class="{{index===0?'H1':'H3'}} hide" animation="{{ani[index]}}">
+                    <rich-text nodes="{{item}}"></rich-text>
+                </view>
+            </view>
+            <view class="popupPageAfter" style="background: url('https://6666-ffk-9527-5geyex2xdf3cd260-1305014001.tcb.qcloud.la/images/ZHU03919.jpg?sign=efb51dd822f5cabcaa40412d1c44aa0e&t=1651995725') center top / cover no-repeat fixed;height:80vh;" />
+        </view>
+        
+    </swiper-item>
+</swiper>

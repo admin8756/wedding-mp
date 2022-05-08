@@ -1,0 +1,144 @@
+page {
+    background-color: #bf2d37;
+    position: relative;
+}
+
+.pages {
+    width: 100vw;
+    height: 100vh;
+}
+
+.card {
+    background-color: rgb(232, 219, 214);
+}
+
+.cover {
+    width: 78vw;
+    position: absolute;
+    top: 15vh;
+    height: 70vh;
+    left: 10vw;
+    display: flex;
+    border-radius: 2rpx;
+    margin: 1vw;
+}
+
+.cover::after {
+    content: "";
+    width: 70vw;
+    position: absolute;
+    height: 66vh;
+    display: flex;
+    margin: 4vw;
+    background: url(https://www.ihchina.cn/Public/static/themes/image/temp/png14.png);
+    opacity: 0.1;
+    border: 4rpx solid #290a0ae5;
+}
+
+.title {
+    margin-top: 100rpx;
+    writing-mode: vertical-lr;
+    font-size: 220rpx;
+    line-height: 200rpx;
+    font-family: "HengShanMaoXing-1";
+    color: #290a0ae5;
+    font-weight: 500;
+}
+
+.content {
+    position: absolute;
+    bottom: 30%;
+    width: 100%;
+    text-align: center;
+    font-size: 50rpx;
+    font-family: "YunFengLinQiaoTi-2";
+}
+
+.xi {
+    color: #d60707;
+}
+
+.bottom {
+    position: absolute;
+    bottom: 10%;
+    display: flex;
+    text-align: center;
+    width: 100%;
+    z-index: 9;
+}
+
+.leeBtn {
+    background: #00000000;
+    border: 2rpx solid;
+    font-weight: 500;
+}
+
+.morePage {
+    width: 90vw;
+    position: absolute;
+    top: 10vh;
+    height: 85vh;
+    left: 4vw;
+    border-radius: 2rpx;
+    margin: 1vw;
+    overflow: hidden;
+}
+
+.poet {
+    width: 90vw;
+    letter-spacing: 4rpx;
+    line-height: 100rpx;
+    font-size: 46rpx;
+    padding-top: 100rpx;
+    padding-bottom: 100rpx;
+    z-index: 99;
+    position: relative;
+    writing-mode: vertical-rl;
+    font-family: "HanChengBoBoXingJian-2";
+}
+.poet .author {
+    text-align: right;
+}
+
+.poet .moreText {
+    padding-left: 5rpx;
+    padding-right: 5rpx;
+    border-left: 0.5px solid #888888;
+}
+
+.bgImage {
+    width: 85vw;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    filter: blur(20rpx);
+    transform: scale(1.2);
+}
+
+.tipsImage {
+    width: 90%;
+    text-align: center;
+}
+
+.hide {
+    opacity: 0;
+}
+.popupPage {
+    position: relative;
+    z-index: 33;
+    height: 80%;
+    overflow: hidden;
+}
+.popupPageAfter {
+    opacity: 0.35;
+    display: flex;
+    width: 100vw;
+    height: 50vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    filter: blur(8rpx);
+    z-index: 1;
+    transform: scale(1.1);
+}
