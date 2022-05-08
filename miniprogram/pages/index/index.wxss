@@ -1,15 +1,15 @@
 page {
     background-color: #bf2d37;
-    position: relative;
+    position: relative
 }
 
 .pages {
     width: 100vw;
-    height: 100vh;
+    height: 100vh
 }
 
 .card {
-    background-color: rgb(232, 219, 214);
+    background-color: #e8dbd6
 }
 
 .cover {
@@ -20,7 +20,7 @@ page {
     left: 10vw;
     display: flex;
     border-radius: 2rpx;
-    margin: 1vw;
+    margin: 1vw
 }
 
 .cover::after {
@@ -31,8 +31,12 @@ page {
     display: flex;
     margin: 4vw;
     background: url(https://www.ihchina.cn/Public/static/themes/image/temp/png14.png);
-    opacity: 0.1;
-    border: 4rpx solid #290a0ae5;
+    opacity: .1;
+    border: 4rpx solid #290a0ae5
+}
+
+.margin-top {
+    margin-top: 30rpx
 }
 
 .title {
@@ -42,7 +46,7 @@ page {
     line-height: 200rpx;
     font-family: "HengShanMaoXing-1";
     color: #290a0ae5;
-    font-weight: 500;
+    font-weight: 500
 }
 
 .content {
@@ -51,11 +55,11 @@ page {
     width: 100%;
     text-align: center;
     font-size: 50rpx;
-    font-family: "YunFengLinQiaoTi-2";
+    font-family: "YunFengLinQiaoTi-2"
 }
 
 .xi {
-    color: #d60707;
+    color: #d60707
 }
 
 .bottom {
@@ -64,13 +68,13 @@ page {
     display: flex;
     text-align: center;
     width: 100%;
-    z-index: 9;
+    z-index: 9
 }
 
 .leeBtn {
     background: #00000000;
     border: 2rpx solid;
-    font-weight: 500;
+    font-weight: 500
 }
 
 .morePage {
@@ -81,7 +85,7 @@ page {
     left: 4vw;
     border-radius: 2rpx;
     margin: 1vw;
-    overflow: hidden;
+    overflow: hidden
 }
 
 .poet {
@@ -94,16 +98,17 @@ page {
     z-index: 99;
     position: relative;
     writing-mode: vertical-rl;
-    font-family: "HanChengBoBoXingJian-2";
+    font-family: "HanChengBoBoXingJian-2"
 }
+
 .poet .author {
-    text-align: right;
+    text-align: right
 }
 
 .poet .moreText {
     padding-left: 5rpx;
     padding-right: 5rpx;
-    border-left: 0.5px solid #888888;
+    border-left: .5px solid #888
 }
 
 .bgImage {
@@ -113,25 +118,27 @@ page {
     z-index: -1;
     top: 0;
     filter: blur(20rpx);
-    transform: scale(1.2);
+    transform: scale(1.2)
 }
 
 .tipsImage {
     width: 90%;
-    text-align: center;
+    text-align: center
 }
 
 .hide {
-    opacity: 0;
+    opacity: 0
 }
+
 .popupPage {
     position: relative;
     z-index: 33;
-    height: 80%;
-    overflow: hidden;
+    height: 82%;
+    overflow: hidden
 }
+
 .popupPageAfter {
-    opacity: 0.35;
+    opacity: .35;
     display: flex;
     width: 100vw;
     height: 50vh;
@@ -140,5 +147,89 @@ page {
     left: 0;
     filter: blur(8rpx);
     z-index: 1;
-    transform: scale(1.1);
+    transform: scale(1.1)
+}
+
+.padding {
+    padding: 30rpx
+}
+
+.padding-xs {
+    padding: 10rpx
+}
+
+video {
+    vertical-align: middle
+}
+
+.inputDanmu {
+    height: 200rpx
+}
+
+.margin {
+    margin: 30rpx
+}
+
+.kb {
+    display: flex
+}
+
+.text-bold {
+    font-weight: bold
+}
+
+.userDanmu_img {
+    display: inline-block;
+    vertical-align: top;
+    height: 60rpx;
+    width: 60rpx;
+    border-radius: 30rpx
+}
+
+.userDanmu_list {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 30rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    padding: 0 15rpx;
+}
+
+.aon {
+    position: absolute;
+    white-space: normal;
+    overflow: hidden;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-radius: 60rpx;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+@keyframes first {
+    from {
+        left: 100%;
+    }
+
+    to {
+        left: -200%;
+    }
+}
+
+.lee-bar {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.wx-switch-input {
+    transform: scale(.8);
+}
+
+.border {
+    border-radius: 5rpx;
+    border-bottom: 2rpx solid;
+}
+
+.margin-sm {
+    margin: 20rpx;
 }

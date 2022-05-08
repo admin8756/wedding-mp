@@ -1,6 +1,6 @@
 <swiper style="height: 100vh; width: 100vw;" vertical current="{{swiperIndex}}" duration="{{888}}" bindchange="pageChange">
     <!-- 主页 -->
-    <swiper-item class="home" current="{{swiperIndex}}">
+    <swiper-item class="home">
         <view class="card cover show">
             <view>
                 <text wx:for="{{snows}}" wx:key="index" style="left:{{snows[index]}}rpx" animation="{{animation[index]}}" class='snow iconfont icon-aixin_shixin' data-index='{{index}}'></text>
@@ -22,12 +22,49 @@
     <swiper-item>
         <view class="card morePage show" style="position: relative;">
             <view class="poet popupPage">
-                <view wx:for="{{textList}}" wx:key="index" class="{{index===0?'H1':'H3'}} hide" animation="{{ani[index]}}">
+                <view wx:for="{{textList}}" wx:key="index" class="hide" animation="{{ani[index]}}">
                     <rich-text nodes="{{item}}"></rich-text>
                 </view>
             </view>
             <view class="popupPageAfter" style="background: url('https://6666-ffk-9527-5geyex2xdf3cd260-1305014001.tcb.qcloud.la/images/ZHU03919.jpg?sign=efb51dd822f5cabcaa40412d1c44aa0e&t=1651995725') center top / cover no-repeat fixed;height:80vh;" />
         </view>
-        
+    </swiper-item>
+    <!-- 照片欣赏 -->
+    <swiper-item>
+        <view class="card">
+            <video bindtimeupdate="updatePlayTime" id="myVideo" enable-danmu loop muted show-progress="{{false}}" object-fit="fill" show-fullscreen-btn="{{false}}" show-play-btn="{{false}}" enable-progress-gesture="{{false}}" controls="{{false}}" style="width: 100vw;height: 133vw;" src="cloud://ffk-9527-5geyex2xdf3cd260.6666-ffk-9527-5geyex2xdf3cd260-1305014001/vlog.mp4">
+                <view wx:for="{{danmuList.list}}" wx:key="index" wx:if="{{danmuList.open}}">
+                    <view class="aon" style="animation: first {{item.time}}s linear forwards;top:{{item.top+'%'}};color:{{item.color}};">
+                        <image src="{{item.avatarUrl}}" mode="aspectFit" class="userDanmu_img"></image>
+                        <view class="userDanmu_list">
+                            {{item.content}}
+                        </view>
+                    </view>
+                </view>
+            </video>
+        </view>
+        <view class="card padding-xs margin" style="border-radius: 30rpx;">
+            <form>
+                <view class="lee-bar margin">
+                    <view class="text-bold">已有{{danmuList.list.length||0}}条祝福</view>
+                    <switch checked="{{danmuList.open}}" bindchange="tabSwitch"></switch>
+                </view>
+                <textarea value="{{inputData}}" name="danmu" bindinput="inputDanMu" cursor="{{0}}" auto-height type="text" class="margin-sm padding-xs border" placeholder="请输入要发送的内容" />
+                <button class="leeBtn margin-top" open-type="getUserInfo" bindgetuserinfo="getUserInfo">提交祝福</button>
+                <view class="kb" style="height: 30rpx;"></view>
+            </form>
+        </view>
+    </swiper-item>
+    <!-- 婚礼规划 -->
+    <swiper-item>
+        <view class="card">
+            婚礼规划
+        </view>
+    </swiper-item>
+    <!-- 参加婚礼 -->
+    <swiper-item>
+        <view class="card">
+            婚礼规划
+        </view>
     </swiper-item>
 </swiper>

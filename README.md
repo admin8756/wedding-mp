@@ -26,8 +26,7 @@
 wx.addPhoneCalendar(Object object)
 有任何疑问可以致电
 
-#### 参加婚宴
-
+#### 参加婚宴（表单提交）
 姓名
 电话
 人数
