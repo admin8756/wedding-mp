@@ -8,6 +8,7 @@ var i = 0;
 Page({
     data: {
         swiperIndex: 0,
+        page3Css: "",
         playTime: 0,
         snows: [],
         statusBarHeight: '44px',
@@ -31,6 +32,7 @@ Page({
         this.setData({
             [`danmuList.list`]: []
         })
+        // 获取弹幕列表
     },
     onReady() {
         this.videoContext = wx.createVideoContext('myVideo')
@@ -47,18 +49,6 @@ Page({
     onShow() {
         this.stopSnow()
         this.initSnow();
-        wx.getSystemInfoSync({
-            success: (result) => {
-                const {
-                    windowHeight,
-                    safeArea
-                } = result
-                console.log(result)
-                this.setData({
-                    statusBarHeight: windowHeight - safeArea.height
-                })
-            },
-        })
         this.setData({
             snows: randomArray(66)
         })
@@ -75,7 +65,7 @@ Page({
     // 开启喜帖
     nextPage() {
         this.setData({
-            swiperIndex: this.data.swiperIndex + 1
+            swiperIndex: 1
         })
         // 开始播放音乐
     },
@@ -83,6 +73,18 @@ Page({
         const {
             current
         } = e.detail
+        if (current !== 0) {
+            this.stopSnow()
+        }
+        if (current === 0) {
+            this.initSnow();
+            this.setData({
+                snows: randomArray(66)
+            })
+        }
+        if (current !== 2) {
+            this.videoContext.pause()
+        }
         if (current === 1) {
             for (let i = 0; i < this.data.textList.length; i++) {
                 const aniData = wx.createAnimation({
@@ -95,9 +97,20 @@ Page({
                     [`ani.${i}`]: aniData.export()
                 })
             }
-        } else if (current === 2) {
+        }
+        if (current === 2) {
             this.videoContext.seek(0)
             this.videoContext.play()
+        }
+        if (current === 3) {
+            this.setData({
+                page3Css: 'magictime slideUpReturn'
+            })
+        }
+        if (current !== 3) {
+            this.setData({
+                page3Css: ''
+            })
         }
     },
     // 初始化下雪
@@ -167,6 +180,27 @@ Page({
     tabSwitch(e) {
         this.setData({
             [`danmuList.open`]: e.detail.value
+        })
+    },
+    // 导航到饭店
+    navigation(e) { 
+        console.log(e)
+        wx.openLocation({
+            latitude: 39.9087,
+            longitude: 116.3974,
+            scale: 18,
+            name: '包头市九原饭店',
+            address: '包头市九原饭店'
+        })
+    },
+    // 设置提醒
+    setTips(e){
+        console.log(e)
+    },
+    addForm(e) {
+        console.log(e)
+        this.setData({
+            swiperIndex:4
         })
     }
 })

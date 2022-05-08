@@ -55,16 +55,61 @@
             </form>
         </view>
     </swiper-item>
-    <!-- 婚礼规划 -->
+    <!-- 婚礼信息 -->
     <swiper-item>
-        <view class="card">
-            婚礼规划
+        <map class="maps boingInUp magictime" style="z-index: 22;" scale="16" longitude="109.96339" latitude="40.608218"></map>
+        <view style="position: relative;" style="margin-top: -10vh; z-index: 99;">
+            <view class="card funcList {{page3Css}}">
+                <view style="border-radius: 30rpx; overflow: hidden;">
+                    <image mode="widthFix" style="width: 100%;" src="cloud://ffk-9527-5geyex2xdf3cd260.6666-ffk-9527-5geyex2xdf3cd260-1305014001/images/ZHU03919.jpg"></image>
+                </view>
+                <view class="padding">
+                    <view class="lee-bar border-bottom">
+                        <view class="title2">
+                            地点：包头市九原饭店
+                        </view>
+                        <view style="z-index: 99;">
+                            <button class="leeBtn lee-btn-2" style="height: 1.8rem;line-height: 1.8rem;" size="mini" bindtap="navigation">一键导航</button>
+                        </view>
+                    </view>
+                    <view class="lee-bar border-bottom">
+                        <view class="title2">
+                            宵夜：5月28日晚
+                        </view>
+                        <view style="z-index: 99;">
+                            <button class="leeBtn lee-btn-2 " style="height: 1.8rem;line-height: 1.8rem;" size="mini" bindtap="setTips" data-type="xy">设置提醒</button>
+                        </view>
+                    </view>
+                    <view class="lee-bar border-bottom">
+                        <view class="title2">
+                            接亲：5月29日早
+                        </view>
+                        <view style="z-index: 99;">
+                            <button class="leeBtn lee-btn-2 " style="height: 1.8rem;line-height: 1.8rem;"  bindtap="setTips" data-type="jq" size="mini">设置提醒</button>
+                        </view>
+                    </view>
+                    <view class="lee-bar border-bottom">
+                        <view class="title2">
+                            正席：5月29日午
+                        </view>
+                        <view style="z-index: 99;">
+                            <button class="leeBtn lee-btn-2" style="height: 1.8rem;line-height: 1.8rem;"  bindtap="setTips" data-type="zx" size="mini">设置提醒</button>
+                        </view>
+                    </view>
+                </view>
+                <view class="flex bottom" style="width: 100%;bottom: 5%;">
+                    <button class="lee-btn-2 leeBtn" style="height: 2.2rem;line-height: 2.2rem;" bindtap="addForm">预约到场</button>
+                </view>
+            </view>
         </view>
+
     </swiper-item>
-    <!-- 参加婚礼 -->
+    <!-- 参加婚宴（表单提交） -->
     <swiper-item>
-        <view class="card">
-            婚礼规划
-        </view>
+        目前参加人数
+        请输入姓名
+        请输入要参加的人数
+        请输入手机号码
+        确定提交
     </swiper-item>
 </swiper>
