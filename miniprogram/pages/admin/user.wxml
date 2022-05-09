@@ -1,2 +1,9 @@
-<!--pages/admin/user.wxml-->
-<text>pages/admin/user.wxml</text>
+<view class="lee-list">
+  <view class="lee-item">
+    头像
+    名字
+    参加人数 
+    拨打电话
+    拉黑用户
+  </view>
+</view>

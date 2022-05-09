@@ -1,2 +1,10 @@
-<!--pages/admin/card.wxml-->
-<text>pages/admin/card.wxml</text>
+<view class="lee-list">
+  <view wx:for="{{list}}">
+    {{item.name}}
+  </view>
+</view>
+<view class="bottom flex">
+  <button>新增邀请函</button>
+</view>
+
+  

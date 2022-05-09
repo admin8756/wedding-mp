@@ -1,2 +1,11 @@
-<!--pages/admin/barrage.wxml-->
-<text>pages/admin/barrage.wxml</text>
+// 弹幕管理
+
+<view class="lee-list">
+    <view class="lee-item">
+        头像
+        名字
+        弹幕
+        通过||删除
+    </view>
+</view>
+  

@@ -1,8 +1,11 @@
 Page({
-	data: {},
+	data: {
+		list:[]
+	},
 	onLoad(options) {},
 	onReady() {},
-	onShow() {},
+	onShow() {
+	},
 	onHide() {},
 	onUnload() {},
 	onPullDownRefresh() {},
