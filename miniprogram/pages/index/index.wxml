@@ -14,7 +14,7 @@
 				<text class="tips2"> 百年好合 </text>
 			</view>
 			<view class="bottom">
-				<button class="leeBtn heartbeat" bindtap="nextPage">{{userNmae||'亲友'}}亲启</button>
+				<button class="leeBtn heartbeat" bindtap="nextPage">{{userName||'亲友'}}亲启</button>
 			</view>
 		</view>
 	</swiper-item>

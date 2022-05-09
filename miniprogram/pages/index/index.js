@@ -30,7 +30,7 @@ Page({
     onLoad(option) {
 				console.log(option)
         this.setData({
-					userNmae:option.name,
+					userName:option.name,
             [`danmuList.list`]: []
         })
         // 获取弹幕列表
