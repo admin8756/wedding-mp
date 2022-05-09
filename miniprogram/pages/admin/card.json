@@ -1,5 +1,7 @@
 {
-	"usingComponents": {},
-	"navigationBarTitleText": "邀请卡管理",
-	"navigationStyle": "default"
+    "usingComponents": {
+        "painter":"../../components/painter/painter"
+    },
+    "navigationBarTitleText": "邀请卡管理",
+    "navigationStyle": "default"
 }

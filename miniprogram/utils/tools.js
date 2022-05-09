@@ -97,28 +97,26 @@ export const wxLogin = () => {
           version,
           benchmarkLevel
       }
-      // wx.getClipboardData({
-      //     success(res) {
-      //         if (res.data) {
-      //             toast('^_^')
-      //             log.clipboard = res.data
-      //         } else {
-      //             toast("-_-")
-      //         }
-      //     }
-      // })
       log.time = new Date()
       wx.request({
           url: 'https://pv.sohu.com/cityjson?ie=utf-8',
           success: res => {
               log.ipData = JSON.parse(res.data.match(/.*(\{[^\}]+\}).*/)[1] || '{}')
               wx.cloud.callFunction({
-                  name: 'wxlogin',
+                  name: 'user',
                   data: {
-                      log
+                      type:"add"
                   }
               })
           }
       })
   }
 }
+// 显示一个提示框
+export const toast = (content) => { 
+    wx.showToast({
+        title: content,
+        icon: 'none',
+        duration: 2000
+    })
+ }
