@@ -77,3 +77,16 @@ wx.addPhoneCalendar(Object object)
  在表单页，填入姓名。否则为空
 
 ```
+使用方法
+
+克隆仓库
+
+cd .\miniprogram\
+
+npm install
+
+导入项目
+
+微信开发者工具=》工具=》构建npm
+
+编译使用

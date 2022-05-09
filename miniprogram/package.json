@@ -1,0 +1,11 @@
+{
+  "name": "wedding-mp",
+  "version": "1.0.0",
+  "description": "请帖系统",
+  "author": "李俊峰",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "ISC",
+  "dependencies": {}
+}
