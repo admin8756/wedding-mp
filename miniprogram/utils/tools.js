@@ -19,15 +19,14 @@ export const getRandomColor = () => {
 }
 
 // 输入时间，内容，返回一个弹幕对象
-export const createDanmu = (time, content) => {
+export const createDanmu = (time, text) => {
     const {
         nickName,
         avatarUrl
     } = wx.getStorageSync('userInfo')
-
     return {
         time,
-        content,
+        text,
         nickName,
         avatarUrl,
         top: Math.ceil(Math.random() * 100),

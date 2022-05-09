@@ -59,7 +59,7 @@ exports.main = async (event, context) => {
         return addOne(event.item)
     }
     if (event.type === 'check') {
-        return checkContent(event.content)
+        return checkContent(event.text)
     }
     return '方法调用错误，没有找到对应的type'
 }

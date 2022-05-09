@@ -1,6 +1,5 @@
 import {
     createDanmu,
-    getRandomColor,
     randomArray,
     showModal,
     toast
@@ -16,10 +15,7 @@ Page({
         animation: [],
         dateTime: "",
         inputData: "",
-        danmuList: {
-            list: [],
-            open: true,
-        },
+        danmuList: [],
         textList: [
             `<p class="moreText">送呈贵宾 恭请阁下莅临</p>`,
             `<p class="moreText">谨定于二零二二年五月二十九日</p>`,
@@ -41,7 +37,7 @@ Page({
         if (list.result) {
             this.setData({
                 userName: option.name,
-                [`danmuList.list`]: list.result.data
+                danmuList: list.result.data
             })
         } else {
             this.setData({
@@ -163,8 +159,6 @@ Page({
         }
         // 存储用户信息
         wx.setStorageSync('userInfo', e.detail.userInfo)
-        // 检查内容
-        console.log(inputData)
         const check = await wx.cloud.callFunction({
             name: "barrage",
             data: {
@@ -181,13 +175,11 @@ Page({
                     item: danmu
                 }
             })
-            const {
-                list
-            } = this.data.danmuList
+            const list = this.data.danmuList
             list.push(danmu)
             this.setData({
                 inputData: "",
-                [`danmuList.list`]: list
+                danmuList: list
             })
             toast("祝福成功")
         }
@@ -195,13 +187,13 @@ Page({
     // 记录播放时间
     updatePlayTime(e) {
         this.setData({
-            playTime: e.detail.currentTime
+            playTime: +e.detail.currentTime.toFixed(0)
         })
     },
     tabSwitch(e) {
-        this.setData({
-            [`danmuList.open`]: e.detail.value
-        })
+        // this.setData({
+        //     [`danmuList.open`]: e.detail.value
+        // })
     },
     // 导航到饭店
     navigation(e) {
