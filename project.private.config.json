@@ -8,12 +8,16 @@
 				{
 					"name": "首页",
 					"pathName": "pages/index/index",
-					"query": ""
+					"query": "name=李俊峰",
+					"launchMode": "default",
+					"scene": null
 				},
 				{
 					"name": "管理",
-					"pathName": "pages/admin/barrage",
-					"query": ""
+					"pathName": "pages/admin/card",
+					"query": "",
+					"launchMode": "default",
+					"scene": null
 				}
 			]
 		}

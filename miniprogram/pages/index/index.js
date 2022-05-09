@@ -28,8 +28,9 @@ Page({
         ]
     },
     onLoad(option) {
-        console.log(option)
+				console.log(option)
         this.setData({
+					userNmae:option.name,
             [`danmuList.list`]: []
         })
         // 获取弹幕列表

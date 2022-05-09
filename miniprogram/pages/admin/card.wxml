@@ -1,5 +1,5 @@
 <view class="lee-list">
-  <view wx:for="{{list}}">
+  <view wx:for="{{list}}" wx:key="index">
     {{item.name}}
   </view>
 </view>

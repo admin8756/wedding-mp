@@ -14,8 +14,8 @@
 	},
 	"tabBar":{
 		"position":"top",
-		"color":"#F00F00",
-		"selectedColor":"#FFF000",
+		"color":"#888888",
+		"selectedColor":"#333333",
 		"list":[{
 			"pagePath":"pages/admin/card",
 			"text":"请帖"
