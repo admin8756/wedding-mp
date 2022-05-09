@@ -76,47 +76,47 @@ export const touch = (type = "medium") => {
 // 登录
 
 export const wxLogin = () => {
-  if (isDevtools()) {
-      return
-  } else {
-      const {
-          batteryLevel,
-          language,
-          platform,
-          model,
-          brand,
-          version,
-          benchmarkLevel
-      } = wx.getSystemInfoSync()
-      let log = {
-          batteryLevel,
-          language,
-          platform,
-          model,
-          brand,
-          version,
-          benchmarkLevel
-      }
-      log.time = new Date()
-      wx.request({
-          url: 'https://pv.sohu.com/cityjson?ie=utf-8',
-          success: res => {
-              log.ipData = JSON.parse(res.data.match(/.*(\{[^\}]+\}).*/)[1] || '{}')
-              wx.cloud.callFunction({
-                  name: 'user',
-                  data: {
-                      type:"add"
-                  }
-              })
-          }
-      })
-  }
+    if (isDevtools()) {
+        return
+    } else {
+        const {
+            batteryLevel,
+            language,
+            platform,
+            model,
+            brand,
+            version,
+            benchmarkLevel
+        } = wx.getSystemInfoSync()
+        let log = {
+            batteryLevel,
+            language,
+            platform,
+            model,
+            brand,
+            version,
+            benchmarkLevel
+        }
+        log.time = new Date()
+        wx.request({
+            url: 'https://pv.sohu.com/cityjson?ie=utf-8',
+            success: res => {
+                log.ipData = JSON.parse(res.data.match(/.*(\{[^\}]+\}).*/)[1] || '{}')
+                wx.cloud.callFunction({
+                    name: 'user',
+                    data: {
+                        type: "add"
+                    }
+                })
+            }
+        })
+    }
 }
 // 显示一个提示框
-export const toast = (content) => { 
+export const toast = (content) => {
     wx.showToast({
         title: content,
         icon: 'none',
         duration: 2000
     })
- }
+}

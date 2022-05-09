@@ -1,11 +1,15 @@
-// 弹幕管理
-
 <view class="lee-list">
-    <view class="lee-item">
-        头像
-        名字
-        弹幕
-        通过||删除
+    <view class="lee-item" wx:for="{{list}}" wx:key="index">
+        <view>
+            <image src="{{item.avatarUrl}}"></image>
+            <text>{{item.nickName}}</text>
+        </view>
+        <view class="content">
+            {{item.content}}
+        </view>
+        <view>
+            <button bindtap="updateCard">{{item.show?'隐藏':'显示'}}</button>
+            <button bindtap="delCard" data-name="{{item.content}}" data-id="{{item._id}}">删除</button>
+        </view>
     </view>
 </view>
-  

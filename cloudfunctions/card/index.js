@@ -8,8 +8,8 @@ const getQrCode = async (userName) => {
 	const result = await cloud.openapi.wxacode.get({
 		"path": `pages/index/index?name=${userName}`,
 		"width": 430,
-		"envVersion": 'develop'
-		// "envVersion": 'release' // 线上环境
+		// "envVersion": 'develop'
+		"envVersion": 'release' // 线上环境
 	})
 	if (result && result.buffer) {
 		var res = await cloud.uploadFile({

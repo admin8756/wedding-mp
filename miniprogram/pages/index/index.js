@@ -1,7 +1,9 @@
 import {
     createDanmu,
+    getRandomColor,
     randomArray,
-    showModal
+    showModal,
+    toast
 } from "../../utils/tools";
 var i = 0;
 
@@ -27,25 +29,28 @@ Page({
             `<p class="author">特邀<strong>·恭候光临</strong></p>`,
         ]
     },
-    onLoad(option) {
-				console.log(option)
-        this.setData({
-					userName:option.name,
-            [`danmuList.list`]: []
+    async onLoad(option) {
+        const list = await wx.cloud.callFunction({
+            name: "barrage",
+            data: {
+                type: "list",
+                pageNum: 0
+            }
+
         })
-        // 获取弹幕列表
+        if (list.result) {
+            this.setData({
+                userName: option.name,
+                [`danmuList.list`]: list.result.data
+            })
+        } else {
+            this.setData({
+                userName: option.name,
+            })
+        }
     },
     onReady() {
         this.videoContext = wx.createVideoContext('myVideo')
-    },
-    AddNewDanmu(danmu) {
-        this.id = wx.getStorageSync('user_openId');
-        this.danmu = danmu;
-        this.display = false;
-        this.top = Math.ceil(Math.random() * 100);
-        this.time = 10;
-        this.color = com.getColor();
-        this.avatarUrl = wx.getStorageSync('user_avatarUrl');
     },
     onShow() {
         this.stopSnow()
@@ -103,10 +108,8 @@ Page({
             this.videoContext.seek(0)
             this.videoContext.play()
         }
-        if (current === 3) {
-        }
-        if (current !== 3) {
-        }
+        if (current === 3) {}
+        if (current !== 3) {}
     },
     // 初始化下雪
     initSnow() {
@@ -143,11 +146,16 @@ Page({
     },
     // 绑定弹幕的输入
     inputDanMu(e) {
-        this.inputData = e.detail.value
+        this.setData({
+            inputData: e.detail.value
+        })
     },
     // 获取用户信息并且发送弹幕
-    getUserInfo(e) {
-        if (!this.inputData) {
+    async getUserInfo(e) {
+        const {
+            inputData
+        } = this.data
+        if (!inputData) {
             return showModal('温馨提醒', "你总得说点什么再发送吧")
         }
         if (!e.detail.userInfo) {
@@ -156,15 +164,33 @@ Page({
         // 存储用户信息
         wx.setStorageSync('userInfo', e.detail.userInfo)
         // 检查内容
-        const danmu = createDanmu(this.data.playTime, this.inputData)
-        const {
-            list
-        } = this.data.danmuList
-        list.push(danmu)
-        this.setData({
-            inputData: "",
-            [`danmuList.list`]: list
+        console.log(inputData)
+        const check = await wx.cloud.callFunction({
+            name: "barrage",
+            data: {
+                type: "check",
+                content: inputData
+            }
         })
+        if (check) {
+            const danmu = createDanmu(this.data.playTime, inputData)
+            await wx.cloud.callFunction({
+                name: "barrage",
+                data: {
+                    type: "add",
+                    item: danmu
+                }
+            })
+            const {
+                list
+            } = this.data.danmuList
+            list.push(danmu)
+            this.setData({
+                inputData: "",
+                [`danmuList.list`]: list
+            })
+            toast("祝福成功")
+        }
     },
     // 记录播放时间
     updatePlayTime(e) {
@@ -178,7 +204,7 @@ Page({
         })
     },
     // 导航到饭店
-    navigation(e) { 
+    navigation(e) {
         console.log(e)
         wx.openLocation({
             latitude: 40.608218,
@@ -189,13 +215,13 @@ Page({
         })
     },
     // 设置提醒
-    setTips(e){
+    setTips(e) {
         console.log(e)
     },
     addForm(e) {
         console.log(e)
         this.setData({
-            swiperIndex:4
+            swiperIndex: 4
         })
     }
 })
