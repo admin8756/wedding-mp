@@ -1,10 +1,15 @@
 <view class="lee-list">
   <view wx:for="{{list}}" wx:key="index">
     {{item.name}}
+    查看
+    删除
   </view>
 </view>
-<view class="bottom flex">
-  <button>新增邀请函</button>
+<view class="bottom" style="background-color: antiquewhite;">
+  <view class="lee-bar">
+    <input bindinput="inputName" class="inputName" value="{{userName}}" placeholder="请输入邀请人的名字" type="text" maxlength="5" />
+    <view style="padding-right: 50rpx;">
+      <button bindtap="addCard" size="mini">新增邀请函</button>
+    </view>
+  </view>
 </view>
-
-  

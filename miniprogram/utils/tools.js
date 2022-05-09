@@ -44,3 +44,81 @@ export const showModal = (title, content) => {
         showCancel: false
     })
 }
+
+// 播放音乐相关内容
+const music = wx.getBackgroundAudioManager()
+export const setSrc = (item) => {
+    music.title = item.name
+    music.epname = item.name
+    music.singer = item.auther
+    music.coverImgUrl = item.picUrl
+    music.src = item.mp3url
+    music.onEnded(() => {
+        setSrc(item);
+    })
+}
+export const pauseMusic = () => {
+    music.stop()
+}
+
+
+//  发出震动
+export const touch = (type = "medium") => {
+    // type：heavy、medium、light
+    if (isDevtools()) {
+        return
+    }
+    wx.vibrateShort({
+        type
+    })
+}
+
+// 登录
+
+export const wxLogin = () => {
+  if (isDevtools()) {
+      return
+  } else {
+      const {
+          batteryLevel,
+          language,
+          platform,
+          model,
+          brand,
+          version,
+          benchmarkLevel
+      } = wx.getSystemInfoSync()
+      let log = {
+          batteryLevel,
+          language,
+          platform,
+          model,
+          brand,
+          version,
+          benchmarkLevel
+      }
+      // wx.getClipboardData({
+      //     success(res) {
+      //         if (res.data) {
+      //             toast('^_^')
+      //             log.clipboard = res.data
+      //         } else {
+      //             toast("-_-")
+      //         }
+      //     }
+      // })
+      log.time = new Date()
+      wx.request({
+          url: 'https://pv.sohu.com/cityjson?ie=utf-8',
+          success: res => {
+              log.ipData = JSON.parse(res.data.match(/.*(\{[^\}]+\}).*/)[1] || '{}')
+              wx.cloud.callFunction({
+                  name: 'wxlogin',
+                  data: {
+                      log
+                  }
+              })
+          }
+      })
+  }
+}
