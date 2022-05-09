@@ -27,7 +27,8 @@ Page({
             `<p class="author">特邀<strong>·恭候光临</strong></p>`,
         ]
     },
-    onLoad() {
+    onLoad(option) {
+        console.log(option)
         this.setData({
             [`danmuList.list`]: []
         })

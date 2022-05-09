@@ -1,6 +1,3 @@
-/**
- * 管理后台
- *  */
 Page({
 	data: {},
 	onLoad(options) {},

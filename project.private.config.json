@@ -6,51 +6,14 @@
 		"miniprogram": {
 			"list": [
 				{
-					"name": "db guide",
-					"pathName": "pages/databaseGuide/databaseGuide",
+					"name": "首页",
+					"pathName": "pages/index/index",
 					"query": ""
 				},
 				{
-					"name": "pages/getOpenId/index",
-					"pathName": "pages/getOpenId/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/deployService/index",
-					"pathName": "pages/deployService/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/selectRecord/index",
-					"pathName": "pages/selectRecord/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/sumRecordResult/index",
-					"pathName": "pages/sumRecordResult/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/updateRecord/index",
-					"pathName": "pages/updateRecord/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/updateRecordResult/index",
-					"pathName": "pages/updateRecordResult/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/updateRecordSuccess/index",
-					"pathName": "pages/updateRecordSuccess/index",
-					"query": "",
-					"scene": null
+					"name": "管理",
+					"pathName": "pages/admin/barrage",
+					"query": ""
 				}
 			]
 		}

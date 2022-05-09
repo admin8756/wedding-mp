@@ -1,13 +1,34 @@
 {
 	"pages": [
 		"pages/index/index",
-		"pages/admin/admin"
+		"pages/admin/admin",
+		"pages/admin/barrage",
+		"pages/admin/card",
+		"pages/admin/user"
 	],
 	"window": {
 		"backgroundTextStyle": "light",
 		"navigationStyle": "custom",
 		"navigationBarTitleText": "上请帖",
 		"navigationBarTextStyle": "white"
+	},
+	"tabBar":{
+		"position":"top",
+		"color":"#F00F00",
+		"selectedColor":"#FFF000",
+		"list":[{
+			"pagePath":"pages/admin/card",
+			"text":"请帖"
+		},{
+			"pagePath":"pages/admin/user",
+			"text":"用户"
+		},{
+			"pagePath":"pages/admin/barrage",
+			"text":"弹幕"
+		},{
+			"pagePath":"pages/admin/admin",
+			"text":"我的"
+		}]
 	},
 	"sitemapLocation": "sitemap.json",
 	"style": "v2"
