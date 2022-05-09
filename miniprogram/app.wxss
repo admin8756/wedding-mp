@@ -1,6 +1,5 @@
 /* 引人样式 style/main.css */
 @import 'style/main.wxss';
-@import 'style/magic.wxss';
 
 .show {
     animation: setOpacity 2s 1;

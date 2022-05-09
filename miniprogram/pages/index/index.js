@@ -8,7 +8,6 @@ var i = 0;
 Page({
     data: {
         swiperIndex: 0,
-        page3Css: "",
         playTime: 0,
         snows: [],
         statusBarHeight: '44px',
@@ -103,14 +102,8 @@ Page({
             this.videoContext.play()
         }
         if (current === 3) {
-            this.setData({
-                page3Css: 'magictime slideUpReturn'
-            })
         }
         if (current !== 3) {
-            this.setData({
-                page3Css: ''
-            })
         }
     },
     // 初始化下雪
@@ -186,8 +179,8 @@ Page({
     navigation(e) { 
         console.log(e)
         wx.openLocation({
-            latitude: 39.9087,
-            longitude: 116.3974,
+            latitude: 40.608218,
+            longitude: 109.96339,
             scale: 18,
             name: '包头市九原饭店',
             address: '包头市九原饭店'
