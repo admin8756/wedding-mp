@@ -1,4 +1,4 @@
-<swiper style="height: 100vh; width: 100vw;" vertical current="{{swiperIndex}}" duration="{{888}}" bindchange="pageChange">
+<swiper style="height: 100vh; width: 100vw;" vertical current="{{swiperIndex}}" bindchange="pageChange">
 	<!-- 主页 -->
 	<swiper-item class="home">
 		<view class="card cover show">
