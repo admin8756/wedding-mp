@@ -49,7 +49,7 @@
                     <view class="text-bold">已有{{danmuList.list.length||0}}条祝福</view>
                     <switch checked="{{danmuList.open}}" bindchange="tabSwitch"></switch>
                 </view>
-                <textarea value="{{inputData}}" name="danmu" bindinput="inputDanMu" cursor="{{0}}" auto-height type="text" class="margin-sm padding-xs border" placeholder="请输入要发送的内容" />
+                <textarea value="{{inputData}}" name="danmu" bindinput="inputDanMu" cursor="{{0}}" auto-height type="text" class="margin-sm padding-xs border" maxlength="20" placeholder="请输入要发送的内容" />
                 <button class="leeBtn margin-top" open-type="getUserInfo" bindgetuserinfo="getUserInfo">提交祝福</button>
                 <view class="kb" style="height: 30rpx;"></view>
             </form>

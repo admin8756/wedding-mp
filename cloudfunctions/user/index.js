@@ -7,7 +7,7 @@ const cloud = require('wx-server-sdk')
 // add: 有用户信息则更新，没有则新建
 cloud.init()
 const db = cloud.database().collection('users')
-const _ = db.command
+const $ = cloud.database().command.aggregate
 const getList = async (pageNum) => {
     const MAX_LIMIT = 100
     return db.skip(pageNum * MAX_LIMIT).limit(MAX_LIMIT).get()
@@ -56,11 +56,13 @@ const updateOne = async(item) => {
     })
 }
 // 统计所有用户的userNumber
-const count =async () => {
-    return db.aggregate().group({
-        _id: null,
-        count: _.sum('userNumber')
-    }).get()
+const count = async () => {
+    return db.aggregate()
+    .group({
+      _id: null,
+      count: $.sum('$userNumber')
+    })
+    .end()
 }
 
 

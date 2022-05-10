@@ -1,0 +1,35 @@
+.lee-list {
+    padding-bottom: 200rpx;
+    width: 100vw;
+}
+
+.lee-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    padding: 30rpx;
+    border-bottom: solid 2rpx #888;
+}
+
+.flex {
+    display: flex;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 35rpx;
+}
+.margin-left{
+    margin-left: 30rpx;
+}
+.margin-right{
+    margin-right: 30rpx;
+}
+.content{
+    margin-left: 30rpx;
+}
+.text-gray{
+    color: #888;
+}

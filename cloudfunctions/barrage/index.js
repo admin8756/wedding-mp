@@ -39,6 +39,9 @@ const addOne = async (item) => {
         data: item
     })
 }
+const countNum = async() => {
+    return db.count()
+}
 // 云函数入口函数
 exports.main = async (event, context) => {
     if (!event.type) {
@@ -55,6 +58,9 @@ exports.main = async (event, context) => {
     }
     if (event.type === 'check') {
         return checkContent(event.text)
+    }
+    if(event.type==='count'){
+        return countNum()
     }
     return '方法调用错误，没有找到对应的type'
 }

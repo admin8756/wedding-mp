@@ -1,6 +1,9 @@
 import {
     createDanmu,
+    getRandomMusic,
+    pauseMusic,
     randomArray,
+    setSrc,
     showModal,
     toast
 } from "../../utils/tools";
@@ -75,8 +78,11 @@ Page({
                 userPhone: userData.userPhone,
             })
         }
+        // 随机播放音乐
+        setSrc({src:getRandomMusic()})
     },
     onHide() {
+        pauseMusic()
         this.stopSnow()
     },
     onUnload() {
@@ -125,9 +131,8 @@ Page({
             this.videoContext.seek(0)
             this.videoContext.play()
         }
-        if (current === 3) {}
-        if (current !== 3) {}
         this.setData({
+            [`danmuList.open`]: current === 2? true : false,
             showForm: current === 4 ? true : false
         })
     },

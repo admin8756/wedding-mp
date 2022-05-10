@@ -1,15 +1,15 @@
 <view class="lee-list">
-    <view class="lee-item" wx:for="{{list}}" wx:key="index">
-        <view>
-            <image src="{{item.avatarUrl}}"></image>
-            <text>{{item.nickName}}</text>
+    <view class="lee-bar" wx:for="{{list}}" wx:key="index">
+        <view class="flex">
+            <image style="width: 100rpx;height: 100rpx;border-radius: 50%;" src="{{item.avatarUrl}}"></image>
+            <view class="content">
+                <view class="title">{{item.nickName}} - {{item.time}}</view>
+                <view class="text-gray" style="margin-top: 10rpx;color: {{item.color}};">{{item.content}}</view>
+            </view>
         </view>
-        <view class="content">
-            {{item.content}}
-        </view>
-        <view>
-            <button bindtap="updateCard">{{item.show?'隐藏':'显示'}}</button>
-            <button bindtap="delCard" data-name="{{item.content}}" data-id="{{item._id}}">删除</button>
+        <view class="flex" style="margin-right: 50rpx;">
+            <button size="mini" class="margin-right" bindtap="updateCard">{{item.show?'隐藏':'显示'}}</button>
+            <button size="mini" bindtap="delCard" data-name="{{item.content}}" data-id="{{item._id}}">删除</button>
         </view>
     </view>
 </view>

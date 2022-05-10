@@ -29,7 +29,8 @@
 			"pagePath":"pages/admin/admin",
 			"text":"我的"
 		}]
-	},
+    },
+    "requiredBackgroundModes": ["audio"],
 	"sitemapLocation": "sitemap.json",
 	"style": "v2"
 }

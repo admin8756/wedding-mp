@@ -43,6 +43,9 @@ const addOne = async (item) => {
 		return await db.add({data:item})
 	}
 }
+const countNum = async() => {
+	return db.count()
+}
 // 云函数入口函数
 exports.main = async (event, context) => {
 	if (!event.type) {
@@ -59,6 +62,9 @@ exports.main = async (event, context) => {
 	}
 	if (event.type === 'add') {
 		return addOne(event.item)
+	}
+	if (event.type === 'count') {
+		return countNum()
 	}
 	return '方法调用错误，没有找到对应的type'
 }

@@ -1,3 +1,4 @@
+import {MUSIC_LIST} from "./config";
 // 生成指定长度的随机数数组
 export const randomArray = (length) => {
 	var arr = [];
@@ -47,11 +48,11 @@ export const showModal = (title, content) => {
 // 播放音乐相关内容
 const music = wx.getBackgroundAudioManager()
 export const setSrc = (item) => {
-	music.title = item.name
-	music.epname = item.name
-	music.singer = item.auther
-	music.coverImgUrl = item.picUrl
-	music.src = item.mp3url
+	music.title = "婚礼歌曲"
+	music.epname = "婚礼歌曲"
+	music.singer = "李俊峰&王雅倩"
+	// music.coverImgUrl = item.picUrl
+	music.src = item.src
 	music.onEnded(() => {
 		setSrc(item);
 	})
@@ -71,46 +72,6 @@ export const touch = (type = "medium") => {
 		type
 	})
 }
-
-// 登录
-
-export const wxLogin = () => {
-	if (isDevtools()) {
-		return
-	} else {
-		const {
-			batteryLevel,
-			language,
-			platform,
-			model,
-			brand,
-			version,
-			benchmarkLevel
-		} = wx.getSystemInfoSync()
-		let log = {
-			batteryLevel,
-			language,
-			platform,
-			model,
-			brand,
-			version,
-			benchmarkLevel
-		}
-		log.time = new Date()
-		wx.request({
-			url: 'https://pv.sohu.com/cityjson?ie=utf-8',
-			success: res => {
-				log.ipData = JSON.parse(res.data.match(/.*(\{[^\}]+\}).*/)[1] || '{}')
-				wx.cloud.callFunction({
-					name: 'user',
-					data: {
-						type: "add"
-					}
-				})
-			}
-		})
-	}
-}
 // 显示一个提示框
 export const toast = (content) => {
 	wx.showToast({
@@ -119,4 +80,25 @@ export const toast = (content) => {
 		duration: 2000
 	})
 }
-// 返回
+// 随机返回MUSIC_LIST中的一个
+export const getRandomMusic = () => {
+	return MUSIC_LIST[Math.floor(Math.random() * MUSIC_LIST.length)]
+}
+
+// 计算离2022年5月28日 中午12点 还有多少天，多少小时。多少分。多少秒
+export const getTime = () => {
+	const date = new Date()
+	const now = date.getTime()
+	const end = new Date(2022, 4, 28, 12, 0, 0).getTime()
+	const leftTime = end - now
+	const days = Math.floor(leftTime / (1000 * 60 * 60 * 24))
+	const hours = Math.floor((leftTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+	const minutes = Math.floor((leftTime % (1000 * 60 * 60)) / (1000 * 60))
+	const seconds = Math.floor((leftTime % (1000 * 60)) / 1000)
+	return {
+		days,
+		hours,
+		minutes,
+		seconds
+	}
+}

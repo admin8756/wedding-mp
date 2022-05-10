@@ -3,7 +3,9 @@ Page({
         list:[],
         pageNum:0
     },
-	onLoad(options) {},
+	onLoad(options) {
+        this.getList()
+    },
 	onReady() {},
 	onShow() {},
 	onHide() {},
@@ -53,6 +55,7 @@ Page({
                 pageNum: this.data.pageNum
             }
         })
+        console.log(res)
         this.setData({
             list: this.data.list.concat(res.result.data)
         })

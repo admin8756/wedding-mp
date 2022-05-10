@@ -1,9 +1,15 @@
 <view class="lee-list">
-  <view class="lee-item">
-    头像
-    名字
-    参加人数 
-    拨打电话
-    拉黑用户
-  </view>
+    <view class="lee-bar" wx:for="{{list}}" wx:key="index">
+        <view class="flex">
+            <view style="width: 100rpx;height: 100rpx;border-radius: 50%;font-size: 50rpx;line-height: 100rpx;text-align: center;">{{item.userNumber}}人</view>
+            <view class="content">
+                <view class="title">{{item.userName}}</view>
+                <view class="text-gray" style="margin-top: 10rpx;">{{item.userPhone}}</view>
+            </view>
+        </view>
+        <view class="flex" style="margin-right: 50rpx;">
+            <button size="mini" class="margin-right" bindtap="callPhone" data-name="{{item.content}}" data-id="{{item._id}}">拨号</button>
+            <button size="mini"  bindtap="updateCard">{{item.isBlack?'拉黑':'恢复'}}</button>
+        </view>
+    </view>
 </view>
