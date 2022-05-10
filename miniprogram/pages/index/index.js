@@ -74,7 +74,7 @@ Page({
         if(userData.userName){
             this.setData({
                 userName: userData.userName,
-                userNumber: userData.userNumber,
+                userNumber: userData.userNumber-1,
                 userPhone: userData.userPhone,
             })
         }
@@ -317,8 +317,11 @@ Page({
         }
         if (!/^1[3456789]\d{9}$/.test(userPhone)) {
             return toast("手机号格式不正确")
-        }
-        let userData = wx.getStorageSync('userInfo')
+				}
+				wx.showLoading({
+					title: '提交中...',
+				})
+        let userData = wx.getStorageSync('userInfo')||{}
         userData.userName = userName
         userData.userNumber = userNumber
         userData.userPhone = userPhone
@@ -328,7 +331,8 @@ Page({
                 type: "update",
                 item: userData
             }
-        })
-        toast("预约成功")
+				})
+				wx.hideLoading()
+				showModal('恭喜','预约成功')
     }
 })

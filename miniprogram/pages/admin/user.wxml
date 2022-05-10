@@ -1,9 +1,9 @@
 <view class="lee-list">
     <view class="lee-bar" wx:for="{{list}}" wx:key="index">
         <view class="flex">
-            <view style="width: 100rpx;height: 100rpx;border-radius: 50%;font-size: 50rpx;line-height: 100rpx;text-align: center;">{{item.userNumber}}人</view>
+            <view style="width: 100rpx;height: 100rpx;border-radius: 50%;font-size: 50rpx;line-height: 100rpx;text-align: center;">{{item.userNumber||0}}人</view>
             <view class="content">
-                <view class="title">{{item.userName}}</view>
+                <view class="title">{{item.userName||'未授权'}}</view>
                 <view class="text-gray" style="margin-top: 10rpx;">{{item.userPhone}}</view>
             </view>
         </view>

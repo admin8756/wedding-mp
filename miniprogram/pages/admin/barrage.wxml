@@ -4,7 +4,7 @@
             <image style="width: 100rpx;height: 100rpx;border-radius: 50%;" src="{{item.avatarUrl}}"></image>
             <view class="content">
                 <view class="title">{{item.nickName}} - {{item.time}}</view>
-                <view class="text-gray" style="margin-top: 10rpx;color: {{item.color}};">{{item.content}}</view>
+                <view class="text-gray" style="margin-top: 10rpx;color: {{item.color}};">{{item.content}}s</view>
             </view>
         </view>
         <view class="flex" style="margin-right: 50rpx;">
