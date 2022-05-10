@@ -74,7 +74,7 @@ Page({
         if(userData.userName){
             this.setData({
                 userName: userData.userName,
-                userNumber: userData.userNumber,
+                userNumber: userData.userNumber-1,
                 userPhone: userData.userPhone,
             })
         }
