@@ -1,124 +1,145 @@
 <swiper style="height: 100vh; width: 100vw;" vertical current="{{swiperIndex}}" bindchange="pageChange">
-	<!-- 主页 -->
-	<swiper-item class="home">
-		<view class="card cover show">
-			<view>
-				<text wx:for="{{snows}}" wx:key="index" style="left:{{snows[index]}}rpx" animation="{{animation[index]}}" class='snow iconfont icon-aixin_shixin' data-index='{{index}}'></text>
-			</view>
-			<text class="title">
-				喜帖
-			</text>
-			<view class="content">
-				<text class="tips1"> 永结同心 </text>
-				<text class="xi iconfont icon-aixin_shixin"></text>
-				<text class="tips2"> 百年好合 </text>
-			</view>
-			<view class="bottom">
-				<button class="leeBtn heartbeat" bindtap="nextPage">{{userName||'亲友'}}亲启</button>
-			</view>
-		</view>
-	</swiper-item>
-	<!-- 请帖内容 -->
-	<swiper-item>
-		<view class="card morePage show" style="position: relative;">
-			<view class="poet popupPage">
-				<view wx:for="{{textList}}" wx:key="index" class="hide" animation="{{ani[index]}}">
-					<rich-text nodes="{{item}}"></rich-text>
-				</view>
-			</view>
-			<view class="popupPageAfter" style="background: url('https://6666-ffk-9527-5geyex2xdf3cd260-1305014001.tcb.qcloud.la/images/ZHU03919.jpg?sign=efb51dd822f5cabcaa40412d1c44aa0e&t=1651995725') center top / cover no-repeat fixed;height:80vh;" />
-		</view>
-	</swiper-item>
-	<!-- 照片欣赏 -->
-	<swiper-item>
-		<view class="card">
-			<video bindtimeupdate="updatePlayTime" danmuList="{{danmuList.list}}" id="myVideo" loop muted show-progress="{{false}}" object-fit="fill" show-fullscreen-btn="{{false}}" show-play-btn="{{false}}" controls="{{false}}" enable-progress-gesture="{{false}}" style="width: 100vw;height: 133vw;" src="cloud://ffk-9527-5geyex2xdf3cd260.6666-ffk-9527-5geyex2xdf3cd260-1305014001/vlog.mp4">
-				<view wx:for="{{danmuList.list}}" wx:key="index" wx:if="{{danmuList.open}}">
-					<view class="aon" style="animation: first {{item.time}}s linear forwards;top:{{item.top+'%'}};color:{{item.color}};">
-						<image src="{{item.avatarUrl}}" mode="aspectFit" class="userDanmu_img"></image>
-						<view class="userDanmu_list">
-							{{item.content}}
-						</view>
-					</view>
-				</view>
-			</video>
-		</view>
-		<view class="card padding-xs margin" style="border-radius: 30rpx;">
-			<form>
-				<view class="lee-bar margin">
-					<view class="text-bold">已有{{danmuList.list.length||0}}条祝福</view>
-					<switch checked="{{danmuList.open}}" bindchange="tabSwitch"></switch>
-				</view>
-				<textarea value="{{inputData}}" name="danmu" bindinput="inputDanMu" cursor="{{0}}" auto-height type="text" class="margin-sm padding-xs border" placeholder="请输入要发送的内容" />
-				<button class="leeBtn margin-top" open-type="getUserInfo" bindgetuserinfo="getUserInfo">提交祝福</button>
-				<view class="kb" style="height: 30rpx;"></view>
-			</form>
-		</view>
-	</swiper-item>
-	<!-- 婚礼信息 -->
-	<swiper-item>
-		<map class="maps boingInUp magictime" style="z-index: -1;" scale="16" longitude="109.96339" latitude="40.608218"></map>
-		<view style="position: relative;" style="margin-top: -10vh; z-index: 99;">
-			<view class="card funcList">
-				<view style="border-radius: 30rpx; overflow: hidden;">
-					<image mode="widthFix" style="width: 100%;" src="cloud://ffk-9527-5geyex2xdf3cd260.6666-ffk-9527-5geyex2xdf3cd260-1305014001/images/ZHU03919.jpg"></image>
-				</view>
-				<view class="padding">
-					<view class="lee-bar border-bottom">
-						<view class="title2">
-							地点：包头市九原饭店
-						</view>
-						<view style="z-index: 99;">
-							<button class="leeBtn lee-btn-2" style="height: 1.8rem;line-height: 1.8rem;" size="mini" bindtap="navigation">一键导航</button>
-						</view>
-					</view>
-					<view class="lee-bar border-bottom">
-						<view class="title2">
-							宵夜：5月28日晚
-						</view>
-						<view style="z-index: 99;">
-							<button class="leeBtn lee-btn-2 " style="height: 1.8rem;line-height: 1.8rem;" size="mini" bindtap="setTips" data-type="xy">设置提醒</button>
-						</view>
-					</view>
-					<view class="lee-bar border-bottom">
-						<view class="title2">
-							接亲：5月29日早
-						</view>
-						<view style="z-index: 99;">
-							<button class="leeBtn lee-btn-2 " style="height: 1.8rem;line-height: 1.8rem;" bindtap="setTips" data-type="jq" size="mini">设置提醒</button>
-						</view>
-					</view>
-					<view class="lee-bar border-bottom">
-						<view class="title2">
-							正席：5月29日午
-						</view>
-						<view style="z-index: 99;">
-							<button class="leeBtn lee-btn-2" style="height: 1.8rem;line-height: 1.8rem;" bindtap="setTips" data-type="zx" size="mini">设置提醒</button>
-						</view>
-					</view>
-				</view>
-				<view class="flex bottom" style="width: 100%;bottom: 5%;">
-					<button class="lee-btn-2 leeBtn" style="height: 2.2rem;line-height: 2.2rem;" bindtap="addForm">预约到场</button>
-				</view>
-			</view>
-		</view>
-
-	</swiper-item>
-	<!-- 参加婚宴（表单提交） -->
-	<swiper-item>
-		<view>
-			目前参加人数
-		</view>
-		<view>
-			请输入姓名
-		</view>
-		<view>
-			请输入要参加的人数
-		</view>
-		<view>
-			请输入手机号码</view>
-		<view>
-			确定提交
-		</view>
-	</swiper-item>
+    <!-- 主页 -->
+    <swiper-item class="home">
+        <view class="card cover show">
+            <view>
+                <text wx:for="{{snows}}" wx:key="index" style="left:{{snows[index]}}rpx" animation="{{animation[index]}}" class='snow iconfont icon-aixin_shixin' data-index='{{index}}'></text>
+            </view>
+            <text class="title">
+                喜帖
+            </text>
+            <view class="content">
+                <text class="tips1"> 永结同心 </text>
+                <text class="xi iconfont icon-aixin_shixin"></text>
+                <text class="tips2"> 百年好合 </text>
+            </view>
+            <view class="bottom">
+                <button class="leeBtn heartbeat" bindtap="nextPage">{{userName||'亲友'}}亲启</button>
+            </view>
+        </view>
+    </swiper-item>
+    <!-- 请帖内容 -->
+    <swiper-item>
+        <view class="card morePage show" style="position: relative;">
+            <view class="poet popupPage">
+                <view wx:for="{{textList}}" wx:key="index" class="hide" animation="{{ani[index]}}">
+                    <rich-text nodes="{{item}}"></rich-text>
+                </view>
+            </view>
+            <view class="popupPageAfter" style="background: url('https://6666-ffk-9527-5geyex2xdf3cd260-1305014001.tcb.qcloud.la/images/ZHU03919.jpg?sign=efb51dd822f5cabcaa40412d1c44aa0e&t=1651995725') center top / cover no-repeat fixed;height:80vh;" />
+        </view>
+    </swiper-item>
+    <!-- 照片欣赏 -->
+    <swiper-item>
+        <view class="card">
+            <video bindtimeupdate="updatePlayTime" danmuList="{{danmuList.list}}" id="myVideo" loop muted show-progress="{{false}}" object-fit="fill" show-fullscreen-btn="{{false}}" show-play-btn="{{false}}" controls="{{false}}" enable-progress-gesture="{{false}}" style="width: 100vw;height: 133vw;" src="cloud://ffk-9527-5geyex2xdf3cd260.6666-ffk-9527-5geyex2xdf3cd260-1305014001/vlog.mp4">
+                <view wx:for="{{danmuList.list}}" wx:key="index" wx:if="{{danmuList.open}}">
+                    <view class="aon" style="animation: first {{item.time}}s linear forwards;top:{{item.top+'%'}};color:{{item.color}};">
+                        <image src="{{item.avatarUrl}}" mode="aspectFit" class="userDanmu_image"></image>
+                        <view class="userDanmu_list">
+                            {{item.content}}
+                        </view>
+                    </view>
+                </view>
+            </video>
+        </view>
+        <view class="card padding-xs margin" style="border-radius: 30rpx;">
+            <form>
+                <view class="lee-bar margin">
+                    <view class="text-bold">已有{{danmuList.list.length||0}}条祝福</view>
+                    <switch checked="{{danmuList.open}}" bindchange="tabSwitch"></switch>
+                </view>
+                <textarea value="{{inputData}}" name="danmu" bindinput="inputDanMu" cursor="{{0}}" auto-height type="text" class="margin-sm padding-xs border" placeholder="请输入要发送的内容" />
+                <button class="leeBtn margin-top" open-type="getUserInfo" bindgetuserinfo="getUserInfo">提交祝福</button>
+                <view class="kb" style="height: 30rpx;"></view>
+            </form>
+        </view>
+    </swiper-item>
+    <!-- 婚礼信息 -->
+    <swiper-item>
+        <map class="maps boingInUp magictime" style="z-index: -1;" scale="16" longitude="109.96339" latitude="40.608218"></map>
+        <view style="position: relative;" style="margin-top: -10vh; z-index: 99;">
+            <view class="card funcList">
+                <view style="border-radius: 30rpx; overflow: hidden;">
+                    <image mode="widthFix" style="width: 100%;" src="cloud://ffk-9527-5geyex2xdf3cd260.6666-ffk-9527-5geyex2xdf3cd260-1305014001/images/ZHU03919.jpg"></image>
+                </view>
+                <view class="padding">
+                    <view wx:if="{{!showForm}}">
+                        <view class="lee-bar border-bottom">
+                            <view class="title2">
+                                地点：包头市九原饭店
+                            </view>
+                            <view style="z-index: 99;">
+                                <button class="leeBtn lee-btn-2" style="height: 1.8rem;line-height: 1.8rem;" size="mini" bindtap="navigation">一键导航</button>
+                            </view>
+                        </view>
+                        <view class="lee-bar border-bottom">
+                            <view class="title2">
+                                宵夜：5月28日晚
+                            </view>
+                            <view style="z-index: 99;">
+                                <button class="leeBtn lee-btn-2 " style="height: 1.8rem;line-height: 1.8rem;" size="mini" bindtap="setTips" data-type="xy">设置提醒</button>
+                            </view>
+                        </view>
+                        <view class="lee-bar border-bottom">
+                            <view class="title2">
+                                接亲：5月29日早
+                            </view>
+                            <view style="z-index: 99;">
+                                <button class="leeBtn lee-btn-2 " style="height: 1.8rem;line-height: 1.8rem;" bindtap="setTips" data-type="jq" size="mini">设置提醒</button>
+                            </view>
+                        </view>
+                        <view class="lee-bar border-bottom">
+                            <view class="title2">
+                                正席：5月29日午
+                            </view>
+                            <view style="z-index: 99;">
+                                <button class="leeBtn lee-btn-2" style="height: 1.8rem;line-height: 1.8rem;" bindtap="setTips" data-type="zx" size="mini">设置提醒</button>
+                            </view>
+                        </view>
+                    </view>
+                    <view wx:else>
+                        <view class="lee-bar border-bottom">
+                            <view class="text-bold">姓名</view>
+                            <input value="{{userName}}" maxlength="5" type="text" style="text-align: right;" bindinput="inputName" placeholder="请输入您的姓名" />
+                        </view>
+                        <view class="lee-bar border-bottom">
+                            <view class="text-bold">
+                                参加人数
+                            </view>
+                            <picker style="z-index: 999;" bindchange="pickerUserNumber" value="{{userNumber}}" range="{{userList}}">
+                                <view class="picker">
+                                    当前：{{userList[userNumber]}}
+                                </view>
+                            </picker>
+                        </view>
+                        <view class="lee-bar border-bottom">
+                            <view class="text-bold">手机号</view>
+                            <input value="{{userPhone}}" type="number" style="text-align: right;" bindinput="inputPhoneNumber" placeholder="请输入手机号" maxlength="11" />
+                        </view>
+                    </view>
+                </view>
+                <view class="flex bottom" style="bottom: 5%;">
+                    <view wx:if="{{!showForm}}" class="flex" style="width: 100%; justify-content:center;">
+                        <button class="lee-btn-2 leeBtn" style="height: 2.2rem;line-height: 2.2rem;" bindtap="addForm">预约到场</button>
+                    </view>
+                    <view wx:else class="flex padding-xs padding-lr" style="width: 100%; justify-content:space-between;">
+                        <button size="mini" class="lee-btn-2 leeBtn margin-left-xs" style="height: 2.2rem; width: 280rpx;" bindtap="submitForm">提交</button>
+                        <button size="mini" class="lee-btn-3 leeBtn2 margin-right-xs" style="height: 2.2rem;width: 280rpx;border: 4rpx solid;" bindtap="addForm">返回</button>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </swiper-item>
 </swiper>
+<view class="balckView" wx:if="{{userData.isBlack}}">
+    <view class="padding" style="margin-top: 200rpx;">
+        <view class="text-bold" style="font-size: 2rem;">温馨提示</view>
+        <view class="margin-top" style="line-height: 2rem;">因为您的不当操作，现已被系统拉黑。请点击下方按钮退出本小程序。</view>
+    </view>
+    <navigator target="miniProgram" open-type="exit">
+        <view class="flex" style="align-items: center; width: 100%;margin-top: 300rpx;">
+            <button class="leeBtn" style="font-size: 2rem; color: brown;">立即退出</button>
+        </view>
+    </navigator>
+</view>

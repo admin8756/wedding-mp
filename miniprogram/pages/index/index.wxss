@@ -258,7 +258,6 @@ video {
 	left: 0;
 	margin: 10rpx;
 	border: solid 4rpx #F9EBC8;
-
 }
 
 .border-bottom {
@@ -279,5 +278,39 @@ video {
 	cursor: pointer;
 	text-align: center;
 	padding: 0 16rpx;
-
+}
+.lee-btn-3 {
+	background-color: #f7f7f700;
+	color: #bf2d37;
+	border: 2rpx solid #bf2d37;
+	border-radius: 8rpx;
+	border: none;
+	cursor: pointer;
+	text-align: center;
+	padding: 0 16rpx;
+}
+.userDanmu_image{
+	width: 60rpx;
+	height: 60rpx;
+	border-radius: 50%;
+}
+.margin-right-xs{
+	margin-right: 10rpx;
+}
+.margin-left-xs{
+	margin-left: 10rpx;
+}
+.padding-lr{
+	padding-left: 30rpx;
+	padding-right: 30rpx;
+}
+.balckView{
+    background: #000000;
+    color: #d60707;
+    z-index: 999999;
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
 }

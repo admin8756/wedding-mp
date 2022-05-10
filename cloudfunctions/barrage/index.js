@@ -2,10 +2,6 @@
 const cloud = require('wx-server-sdk')
 cloud.init()
 const db = cloud.database().collection('barrage')
-// list : 返回所有弹幕列表
-// add ：发送弹幕（内容审核）
-// del : 删除弹幕
-
 
 // 获取邀请函列表(传入页码)
 const getList = (pageNum) => {
@@ -45,7 +41,6 @@ const addOne = async (item) => {
 }
 // 云函数入口函数
 exports.main = async (event, context) => {
-    console.log(event)
     if (!event.type) {
         return '缺少必要参数：type'
     }
