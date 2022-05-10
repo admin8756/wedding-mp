@@ -5,7 +5,8 @@ import {
     randomArray,
     setSrc,
     showModal,
-    toast
+    toast,
+    touch
 } from "../../utils/tools";
 var i = 0;
 
@@ -71,15 +72,17 @@ Page({
         this.setData({
             userData: userData
         })
-        if(userData.userName){
+        if (userData.userName) {
             this.setData({
                 userName: userData.userName,
-                userNumber: userData.userNumber-1,
+                userNumber: userData.userNumber - 1,
                 userPhone: userData.userPhone,
             })
         }
         // 随机播放音乐
-        setSrc({src:getRandomMusic()})
+        setSrc({
+            src: getRandomMusic()
+        })
     },
     onHide() {
         pauseMusic()
@@ -93,6 +96,7 @@ Page({
     onShareAppMessage() {},
     // 开启喜帖
     nextPage() {
+        touch()
         this.setData({
             swiperIndex: 1
         })
@@ -132,7 +136,7 @@ Page({
             this.videoContext.play()
         }
         this.setData({
-            [`danmuList.open`]: current === 2? true : false,
+            [`danmuList.open`]: current === 2 ? true : false,
             showForm: current === 4 ? true : false
         })
     },
@@ -177,6 +181,7 @@ Page({
     },
     // 获取用户信息并且发送弹幕
     async getUserInfo(e) {
+        touch()
         const {
             inputData
         } = this.data
@@ -231,7 +236,7 @@ Page({
     },
     // 导航到饭店
     navigation(e) {
-        console.log(e)
+        touch()
         wx.openLocation({
             latitude: 40.608218,
             longitude: 109.96339,
@@ -242,6 +247,7 @@ Page({
     },
     // 设置提醒
     setTips(e) {
+        touch()
         const {
             type
         } = e.currentTarget.dataset
@@ -297,6 +303,7 @@ Page({
         })
     },
     async submitForm() {
+        touch()
         let {
             userName,
             userNumber,
@@ -309,7 +316,7 @@ Page({
         if (!userName) {
             return toast("没有填写姓名")
         }
-        if (!userNumber) {
+        if (!userNumber || userNumber === 0) {
             return toast("没有填写参会人数")
         }
         if (!userPhone) {
@@ -318,7 +325,10 @@ Page({
         if (!/^1[3456789]\d{9}$/.test(userPhone)) {
             return toast("手机号格式不正确")
         }
-        let userData = wx.getStorageSync('userInfo')
+        wx.showLoading({
+            title: '提交中...',
+        })
+        let userData = wx.getStorageSync('userInfo') || {}
         userData.userName = userName
         userData.userNumber = userNumber
         userData.userPhone = userPhone
@@ -329,6 +339,7 @@ Page({
                 item: userData
             }
         })
-        toast("预约成功")
+        wx.hideLoading()
+        showModal('恭喜', '预约成功')
     }
 })

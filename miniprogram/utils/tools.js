@@ -34,6 +34,13 @@ export const createDanmu = (time, content) => {
 		color: getRandomColor()
 	}
 }
+// 是否是开发者模式
+export const isDevtools = () => {
+	const {
+			platform
+	} = wx.getSystemInfoSync();
+	return platform === 'devtools'
+}
 
 // 弹窗
 export const showModal = (title, content) => {

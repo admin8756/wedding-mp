@@ -27,11 +27,7 @@ const initUser = async () => {
                 creationTime: new Date(),
             }
         })
-        return {
-            user_id: cloud.getWXContext().OPENID,
-            isBlack: false,
-            creationTime: new Date(),
-        }
+        return await getOne()
     } else {
         return await getOne()
     }
@@ -41,13 +37,13 @@ const addOne = async (item) => {
     let user = await getOne()
     if (user.data[0].name) {
         return updateOne(item)
-    } else { 
+    } else {
         return db.add({
             data: item
         })
     }
 }
-const updateOne = async(item) => {
+const updateOne = async (item) => {
     const id = item._id
     delete item._id
     item.updateTime = new Date()
@@ -58,11 +54,11 @@ const updateOne = async(item) => {
 // 统计所有用户的userNumber
 const count = async () => {
     return db.aggregate()
-    .group({
-      _id: null,
-      count: $.sum('$userNumber')
-    })
-    .end()
+        .group({
+            _id: null,
+            count: $.sum('$userNumber')
+        })
+        .end()
 }
 
 
