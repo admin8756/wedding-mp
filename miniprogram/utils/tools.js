@@ -1,4 +1,6 @@
-import {MUSIC_LIST} from "./config";
+import {
+	MUSIC_LIST
+} from "./config";
 // 生成指定长度的随机数数组
 export const randomArray = (length) => {
 	var arr = [];
@@ -37,7 +39,7 @@ export const createDanmu = (time, content) => {
 // 是否是开发者模式
 export const isDevtools = () => {
 	const {
-			platform
+		platform
 	} = wx.getSystemInfoSync();
 	return platform === 'devtools'
 }
@@ -108,4 +110,19 @@ export const getTime = () => {
 		minutes,
 		seconds
 	}
+}
+
+export const getIp = async () => {
+	return new Promise((resolve, reject) => {
+		wx.request({
+			url: 'https://restapi.amap.com/v3/ip?key=e578fe7778da38ca76a199496a7e480a',
+			success: (res) => {
+				const data = {
+					province: res.data.province,
+					city: res.data.city
+				}
+				resolve(data)
+			}
+		})
+	})
 }
